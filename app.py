@@ -22,6 +22,9 @@ st.caption("This demo uses my personal resume and portfolio projects. The AI mod
 
 BASE_DIR = Path(__file__).parent
 
+# Job Link
+job_link = st.text_input("Paste Job Description URL")
+
 # Load resume
 resume_path = BASE_DIR / "resume.pdf"
 
@@ -73,8 +76,7 @@ llm = ChatGroq(
 parser = JsonOutputParser()
 
 
-# Job Link
-job_link = st.text_input("Paste Job Description URL")
+
 
 # Scrape Job Page
 def scrape_job_page(url):
