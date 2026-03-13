@@ -9,21 +9,19 @@ urls = [
     "https://sharlynmuturi.github.io/elements.html"
 ]
 
-
 # Technology keywords used for automatic detection
 tech_keywords = [
-"python", "r", "sql", "javascript", "html", "css",
+"python", "r", "sql", "javascript", "html", "css", "html/css", "bootstrap",
 "django", "flask", "streamlit",
 "pytorch", "tensorflow",
-"llm", "langchain", "huggingface", "openai", "chromadb",
+"llms", "rag", "langchain", "hugging face", "openai api", "groq api", "chromadb", "prompt engineering", "llama",
 "prophet",
-"spark", "databricks",
+"spark", "databricks", "mysql database",
 "mysql", "postgresql", "sql server", "ssms", "access", "mongodb",
 "tableau", "power bi",
 "excel", "a/b testing",
 "MLflow", "DVC"
 ]
-
 
 # Function to detect technologies in descriptions
 import re
