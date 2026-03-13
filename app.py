@@ -65,6 +65,9 @@ if not collection.count():
 st.info(f"ChromaDB loaded with {collection.count()} projects")
 
 
+st.caption("The AI model has a daily token usage limit. If you encounter a rate limit error, please try again the next day when the token allowance resets.")
+st.caption("Pressing the “Tailor Resume” or “Generate Cover Letter” button repeatedly in a short period increases token usage.")
+
 # LLM Setup
 api_key = st.secrets["GROQ_API_KEY"] or os.getenv("GROQ_API_KEY")
 
@@ -75,8 +78,6 @@ llm = ChatGroq(
 )
 
 parser = JsonOutputParser()
-
-
 
 
 # Scrape Job Page
@@ -339,11 +340,6 @@ if job_data:
 
             st.subheader("Cover Letter")
             st.text_area("", cover_letter, height=400)
-
-
-st.caption("The AI model has a daily token usage limit. If you encounter a rate limit error, please try again the next day when the token allowance resets.")
-st.caption("Pressing the “Tailor Resume” or “Generate Cover Letter” button repeatedly in a short period increases token usage.")
-
 
 if page_data:
     st.subheader("Extracted Job Data")
