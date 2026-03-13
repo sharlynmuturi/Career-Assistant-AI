@@ -175,7 +175,7 @@ pip install -r requirements.txt
 
 ### Environment Variables
 
-Create a `.env` file in the root directory:
+Create a `.env` file in the root directory: (Groq Link)[https://console.groq.com]
 
 ``` bash
 GROQ_API_KEY=your_api_key_here
@@ -223,5 +223,6 @@ Possible extensions include:
 - Adding downloadable PDF resume output
 - Allowing resume uploads in the UI
 - Supporting multiple job comparisons
+
 
 ---
