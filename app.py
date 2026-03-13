@@ -208,6 +208,8 @@ top_projects_text = None
 
 if job_data:
 
+    st.caption("The AI model has a daily token usage limit. If you encounter a rate limit error, please try again the next day when the token allowance resets. Pressing the “Tailor Resume” or “Generate Cover Letter” button repeatedly in a short period increases token usage.")
+
     description = job_data.get("description") or ""
     skills = job_data.get("skills") or []
 
@@ -218,7 +220,10 @@ if job_data:
     job_query = description + " " + " ".join(skills)
 
     top_projects_text = get_top_projects(job_query)
-
+    
+    with st.expander("Relevant Portfolio Projects"):
+        st.text(top_projects_text)
+        
 # Resume Tailoring Prompt
 prompt_resume_tailor = PromptTemplate.from_template("""
 You are an expert career assistant and resume writer.
@@ -298,8 +303,6 @@ The cover letter should:
 col1, col2 = st.columns(2)
 
 if job_data:
-    
-    st.caption("The AI model has a daily token usage limit. If you encounter a rate limit error, please try again the next day when the token allowance resets. Pressing the “Tailor Resume” or “Generate Cover Letter” button repeatedly in a short period increases token usage.")
     
     with col1:
 
