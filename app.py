@@ -64,9 +64,6 @@ if not collection.count():
 
 st.info(f"ChromaDB loaded with {collection.count()} projects")
 
-
-st.caption("The AI model has a daily token usage limit. If you encounter a rate limit error, please try again the next day when the token allowance resets. Pressing the “Tailor Resume” or “Generate Cover Letter” button repeatedly in a short period increases token usage.")
-
 # LLM Setup
 api_key = st.secrets["GROQ_API_KEY"] or os.getenv("GROQ_API_KEY")
 
@@ -301,7 +298,9 @@ The cover letter should:
 col1, col2 = st.columns(2)
 
 if job_data:
-
+    
+    st.caption("The AI model has a daily token usage limit. If you encounter a rate limit error, please try again the next day when the token allowance resets. Pressing the “Tailor Resume” or “Generate Cover Letter” button repeatedly in a short period increases token usage.")
+    
     with col1:
 
         if st.button("Generate Tailored Resume"):
