@@ -18,8 +18,8 @@ load_dotenv()
 
 st.set_page_config(page_title="AI Career Assistant", layout="wide")
 st.title("AI Resume & Cover Letter Tailoring")
-st.caption("This demo uses my personal resume and portfolio projects. The AI model has a daily token usage limit. If you encounter a rate limit error, please try again the next day when the token allowance resets.")
-st.caption("Pressing the “Tailor Resume” or “Generate Cover Letter” button repeatedly in a short period increases token usage.")
+
+st.caption("This demo app uses my personal resume and portfolio projects.")
 
 BASE_DIR = Path(__file__).parent
 
@@ -339,6 +339,11 @@ if job_data:
 
             st.subheader("Cover Letter")
             st.text_area("", cover_letter, height=400)
+
+
+st.caption("The AI model has a daily token usage limit. If you encounter a rate limit error, please try again the next day when the token allowance resets.")
+st.caption("Pressing the “Tailor Resume” or “Generate Cover Letter” button repeatedly in a short period increases token usage.")
+
 
 if page_data:
     st.subheader("Extracted Job Data")
