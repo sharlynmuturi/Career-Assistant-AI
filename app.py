@@ -61,7 +61,7 @@ st.info(f"ChromaDB loaded with {collection.count()} projects")
 
 
 # LLM Setup
-api_key = os.getenv("GROQ_API_KEY")
+api_key = st.secrets["GROQ_API_KEY"] or os.getenv("GROQ_API_KEY")
 
 llm = ChatGroq(
     temperature=0.3,
