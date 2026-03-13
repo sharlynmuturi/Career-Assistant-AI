@@ -175,7 +175,7 @@ pip install -r requirements.txt
 
 ### Environment Variables
 
-Create a `.env` file in the root directory: (Groq Link)[https://console.groq.com]
+Create a `.env` file in the root directory. Groq Link: [https://console.groq.com]
 
 ``` bash
 GROQ_API_KEY=your_api_key_here
@@ -226,3 +226,4 @@ Possible extensions include:
 
 
 ---
+
