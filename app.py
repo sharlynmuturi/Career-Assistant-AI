@@ -206,13 +206,17 @@ Link: {meta.get("link")}
 top_projects_text = None
 
 if job_data:
-    job_query = job_data["description"] + " " + " ".join(job_data["skills"])
+
+    description = job_data.get("description") or ""
+    skills = job_data.get("skills") or []
+
+    # Ensure skills is always a list
+    if not isinstance(skills, list):
+        skills = []
+
+    job_query = description + " " + " ".join(skills)
 
     top_projects_text = get_top_projects(job_query)
-
-    with st.expander("Relevant Portfolio Projects"):
-        st.text(top_projects_text)
-
 
 # Resume Tailoring Prompt
 prompt_resume_tailor = PromptTemplate.from_template("""
