@@ -18,6 +18,7 @@ load_dotenv()
 
 st.set_page_config(page_title="AI Career Assistant", layout="wide")
 st.title("AI Resume & Cover Letter Tailoring")
+st.caption("This demo uses my personal resume and portfolio projects. The AI model has a daily token usage limit. If you encounter a rate limit error, try again the next day when the token allowance resets.")
 
 BASE_DIR = Path(__file__).parent
 
