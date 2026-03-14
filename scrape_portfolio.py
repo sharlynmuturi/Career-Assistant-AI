@@ -23,7 +23,7 @@ tech_keywords = [
 "mlflow", "dvc", "regex",
 "tesseract", "ocr", "layoutlm", "nlp", "document ai", "sqlite",
 "shap", "survival analysis", "customer churn",
-"recommender systems", "cosine similarity", "sparse matrices", "nltk"
+"recommender systems", "cosine similarity", "sparse matrices", "nltk", "web scraping"
 ]
 
 # Function to detect technologies in descriptions
