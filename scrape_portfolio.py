@@ -14,7 +14,7 @@ tech_keywords = [
 "python", "r", "sql", "javascript", "html", "css", "html/css", "bootstrap",
 "django", "flask", "streamlit",
 "pytorch", "tensorflow",
-"llms", "rag", "langchain", "hugging face", "openai api", "groq api", "chromadb", "prompt engineering", "llama",
+"llms", "rag", "langchain", "hugging face", "openai", "groq", "chromadb", "prompt engineering", "llama",
 "prophet",
 "spark", "databricks", "mysql database",
 "mysql", "postgresql", "sql server", "ssms", "access", "mongodb",
