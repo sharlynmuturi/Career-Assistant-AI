@@ -193,13 +193,15 @@ Run:
 ``` bash
 python scrape_portfolio.py
 ```
-
 This script:
 
-1. Reads project descriptions from the CSV file.
-2. Combines project metadata.
-3. Prepares text for vector embedding.
-4. Stores the projects in **ChromaDB**.
+1. Scrapes a portfolio website using Requests and BeautifulSoup.
+2. Extracts project titles and descriptions from the HTML structure.
+3. Automatically detects the technology stack used in each project by matching keywords in the descriptions.
+4. Searches nearby links to identify and capture the associated GitHub repository for each project.
+5. Aggregates the extracted information into a structured dataset using Pandas.
+6. Creates a combined text field (project name + description + tech stack) to support vector embeddings and semantic search later.
+7. Exports the cleaned dataset as portfolio.csv, which can be used for downstream tasks such as vector databases or RAG applications.
 
 After this step, the vector database will be ready for semantic search.
 
