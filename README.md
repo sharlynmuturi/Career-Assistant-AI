@@ -152,9 +152,9 @@ The generated cover letter:
 ### Clone the repository
 
 ``` bash
-git clone https://github.com/sharlynmuturi/ai-career-assistant.git
+git clone https://github.com/sharlynmuturi/Career-Assistant-AI.git
 
-cd career-assistant-ai
+cd Career-Assistant-AI
 ```
 
 ### Create a virtual environment and activate it
