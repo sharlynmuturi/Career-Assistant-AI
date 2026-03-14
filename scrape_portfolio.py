@@ -20,7 +20,10 @@ tech_keywords = [
 "mysql", "postgresql", "sql server", "ssms", "access", "mongodb",
 "tableau", "power bi",
 "excel", "a/b testing",
-"mLflow", "dvc"
+"mlflow", "dvc", "regex",
+"tesseract", "ocr", "layoutlm", "nlp", "document ai", "sqlite",
+"shap", "survival analysis", "customer churn",
+"recommender systems", "cosine similarity", "sparse matrices", "nltk"
 ]
 
 # Function to detect technologies in descriptions
