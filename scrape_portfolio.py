@@ -12,18 +12,13 @@ urls = [
 # Technology keywords used for automatic detection
 tech_keywords = [
 "python", "r", "sql", "javascript", "html", "css", "html/css", "bootstrap",
-"django", "flask", "streamlit",
-"pytorch", "tensorflow",
+"django", "flask", "streamlit", "pytorch", "tensorflow", "prophet",
 "llms", "rag", "langchain", "hugging face", "openai", "groq", "chromadb", "prompt engineering", "llama",
-"prophet",
-"spark", "databricks", "mysql database",
+"spark", "databricks", "mysql database", "sqlite",
 "mysql", "postgresql", "sql server", "ssms", "access", "mongodb",
-"tableau", "power bi",
-"excel", "a/b testing",
-"mlflow", "dvc", "regex",
-"tesseract", "ocr", "layoutlm", "nlp", "document ai", "sqlite",
-"shap", "survival analysis", "customer churn",
-"recommender systems", "cosine similarity", "sparse matrices", "nltk", "web scraping"
+"tableau", "power bi", "excel", "a/b testing", "mlflow", "dvc", "regex",
+"tesseract", "ocr", "layoutlm", "nlp", "document ai",
+"shap", "survival analysis", "customer churn", "recommender systems", "nltk", "web scraping"
 ]
 
 # Function to detect technologies in descriptions
