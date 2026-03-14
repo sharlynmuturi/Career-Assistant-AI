@@ -186,7 +186,7 @@ The API key is used to access the **Groq LLM service**.
 
 ### Preparing Portfolio Data
 
-If you have portfolio projects stored in a CSV file, you can process them using the provided script.
+If you have portfolio projects in a portfolio website, you can process them using the provided script.
 
 Run:
 
@@ -195,15 +195,14 @@ python scrape_portfolio.py
 ```
 This script:
 
-1. Scrapes a portfolio website using Requests and BeautifulSoup.
-2. Extracts project titles and descriptions from the HTML structure.
-3. Automatically detects the technology stack used in each project by matching keywords in the descriptions.
-4. Searches nearby links to identify and capture the associated GitHub repository for each project.
-5. Aggregates the extracted information into a structured dataset using Pandas.
-6. Creates a combined text field (project name + description + tech stack) to support vector embeddings and semantic search later.
-7. Exports the cleaned dataset as portfolio.csv, which can be used for downstream tasks such as vector databases or RAG applications.
+1. Scrapes a portfolio website and extracts project titles and descriptions from the HTML structure.
+2. Detects the technology stack used in each project by matching keywords in the descriptions.
+3. Searches nearby links to identify and capture the associated GitHub repository for each project.
+4. Aggregates the extracted information into a structured dataset using Pandas.
+5. Creates a combined text field (project name + description + tech stack) to support vector embeddings and semantic search later.
+6. Exports the cleaned dataset as portfolio.csv, which can be used for downstream tasks such as vector databases or RAG applications.
 
-After this step, the vector database will be ready for semantic search.
+The resulting portfolio.csv is ingested into ChromaDB to create embeddings that enable semantic retrieval of relevant portfolio projects for the resume tailoring and cover letter generation workflows.
 
 ---
 
