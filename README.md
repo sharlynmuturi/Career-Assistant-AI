@@ -198,13 +198,14 @@ This script:
 1. Scrapes a portfolio website and extracts project titles and descriptions from the HTML structure.
 2. Detects the technology stack used in each project by matching keywords in the descriptions.
 3. Searches nearby links to identify and capture the associated GitHub repository for each project.
-4. Aggregates the extracted information into a structured dataset using Pandas.
-5. Creates a combined text field (all_text) (project name + description + tech stack) to support vector embeddings and semantic search later.
-6. Exports the cleaned dataset as portfolio.csv, which can be used for downstream tasks such as vector databases or RAG applications.
+4. Aggregates the extracted information into a structured dataset using Pandas and creates a combined text field (all_text = project name + description + tech stack).
+5. Exports the cleaned dataset as portfolio.csv.
+
+If you do not have a portfolio website, you can manually create a portfolio.csv with columns like project_name, description, tech_stack and link.
+
+Combine the project name, description, and tech stack into a column called all_text which will be ingested into ChromaDB for project retrieval.
 
 The resulting portfolio.csv is ingested into ChromaDB to create embeddings that enable semantic retrieval of relevant portfolio projects for the resume tailoring and cover letter generation workflows.
-
-If you do not have a portfolio website, you can manually create a portfolio.csv with columns like project_name, description, tech_stack and link. Combine the project name, description, and tech stack into a column called all_text which will be ingested into ChromaDB for project retrieval.
 
 ---
 
