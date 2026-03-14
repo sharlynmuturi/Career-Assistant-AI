@@ -224,8 +224,7 @@ The app will open in your browser.
 
 Possible extensions include:
 
-- Adding downloadable PDF resume output
-- Allowing resume uploads in the UI
+- Allowing resume and portfolio csv uploads in the UI
 - Supporting multiple job comparisons
 
 
