@@ -203,9 +203,9 @@ This script:
 
 If you do not have a portfolio website, you can manually create a portfolio.csv with columns like project_name, description, tech_stack and link.
 
-Combine the project name, description, and tech stack into a column called all_text which will be ingested into ChromaDB for project retrieval.
+Combine the project name, description, and tech stack into a column called all_text which will be ingested into ChromaDB.
 
-The resulting portfolio.csv is ingested into ChromaDB to create embeddings that enable semantic retrieval of relevant portfolio projects for the resume tailoring and cover letter generation workflows.
+ChromaDB creates and stores embeddings that enable semantic retrieval of relevant portfolio projects for the resume tailoring and cover letter generation workflows.
 
 ---
 
