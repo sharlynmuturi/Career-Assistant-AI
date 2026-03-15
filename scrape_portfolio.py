@@ -17,7 +17,8 @@ tech_keywords = [
 "spark", "databricks", "mysql database", "sqlite",
 "mysql", "postgresql", "sql server", "ssms", "access", "mongodb",
 "tableau", "power bi", "excel", "a/b testing", "mlflow", "dvc", "regex",
-"tesseract", "ocr", "layoutlm", "nlp", "document ai",
+"ai", "tesseract", "ocr", "layoutlm", "nlp", "document ai",
+"machine learning", "statistics", "statistical modelling", "statistical methods", "statistical programming", "analysis",
 "shap", "survival analysis", "customer churn", "recommender systems", "nltk", "web scraping"
 ]
 
