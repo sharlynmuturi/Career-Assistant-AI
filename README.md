@@ -1,5 +1,5 @@
 # AI Career Assistant  
-### Automated Resume Tailoring & Cover Letter Generation with LLMs
+### Resume Tailoring & Cover Letter Generation with LLMs
 
 An AI-powered career assistant that helps tailor resume and generate personalized cover letters for specific job postings.
 
