@@ -384,8 +384,8 @@ with st.spinner("Extracting job data and running analysis..."):
         matched_skills, missing_skills = semantic_skill_match(job_data.get("skills") or [], combined_candidate_skills, embedding_model)
 
         # Display using original capitalization from resume/portfolio if desired
-        matched_skills = [skill for skill in combined_candidate_skills if skill.lower() in matched_skills_normalized]
-        missing_skills = [skill for skill in (job_data.get("skills") or []) if any(s.lower() in missing_skills_normalized for s in normalize_skills([skill]))]
+        matched_skills = [skill for skill in combined_candidate_skills if skill.lower() in matched_skills]
+        missing_skills = [skill for skill in (job_data.get("skills") or []) if any(s.lower() in missing_skills for s in normalize_skills([skill]))]
         
     # Resume & cover letter prompts
     prompt_resume_tailor = PromptTemplate.from_template("""
