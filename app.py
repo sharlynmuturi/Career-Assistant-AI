@@ -323,7 +323,7 @@ with st.spinner("Extracting job data and running analysis..."):
                 techs = line.replace("technologies:", "").split(",")
                 skills.update([t.strip() for t in techs if t.strip()])
     
-            # NEW: detect keywords in descriptions
+            # detect keywords in descriptions
             keywords = [
                 "machine learning", "deep learning", "nlp", "forecasting",
                 "classification", "regression", "data analysis"
@@ -339,8 +339,8 @@ with st.spinner("Extracting job data and running analysis..."):
     def cosine_sim(a, b):
         return dot(a, b) / (norm(a) * norm(b))
 
-    def semantic_skill_match(job_skills, candidate_skills, embedding_model, threshold=0.7):
-        matched = []
+    def semantic_skill_match(job_skills, candidate_skills, embedding_model, threshold=0.5):
+        matches = []
         missing = []
     
         job_embeddings = embedding_model.embed_documents(job_skills)
@@ -349,20 +349,22 @@ with st.spinner("Extracting job data and running analysis..."):
         for i, job_skill in enumerate(job_skills):
             job_emb = job_embeddings[i]
     
-            found_match = False
+            best_match = None
+            best_score = 0
     
             for j, cand_skill in enumerate(candidate_skills):
                 sim = cosine_sim(job_emb, candidate_embeddings[j])
     
-                if sim >= threshold:
-                    matched.append(job_skill)
-                    found_match = True
-                    break
+                if sim > best_score:
+                    best_score = sim
+                    best_match = cand_skill
     
-            if not found_match:
+            if best_score >= threshold:
+                matches.append(f"{job_skill} → {best_match} ({best_score:.2f})")
+            else:
                 missing.append(job_skill)
     
-        return matched, missing
+        return matches, missing
 
     matched_skills = []
     missing_skills = []
@@ -378,15 +380,11 @@ with st.spinner("Extracting job data and running analysis..."):
         job_skills_normalized = normalize_skills(job_data.get("skills") or [])
         candidate_skills_normalized = normalize_skills(combined_candidate_skills)
         
-        # Compute matched / missing
+        # semantic skill matching
         embedding_model = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
         
-        matched_skills, missing_skills = semantic_skill_match(job_data.get("skills") or [], combined_candidate_skills, embedding_model)
-
-        # Display using original capitalization from resume/portfolio if desired
-        matched_skills = [skill for skill in combined_candidate_skills if skill.lower() in matched_skills]
-        missing_skills = [skill for skill in (job_data.get("skills") or []) if any(s.lower() in missing_skills for s in normalize_skills([skill]))]
-        
+        matched_skills, missing_skills = semantic_skill_match(job_data.get("skills") + [job_data.get("description")] or [], combined_candidate_skills, embedding_model)
+ 
     # Resume & cover letter prompts
     prompt_resume_tailor = PromptTemplate.from_template("""
     You are an expert career assistant and resume writer.
