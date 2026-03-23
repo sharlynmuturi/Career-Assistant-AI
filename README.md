@@ -1,14 +1,13 @@
 # AI Career Assistant
 
-### Resume Tailoring, Skill Gap Analysis & Cover Letter Generation using LLMs
+## Resume Tailoring, Skill Gap Analysis & Cover Letter Generation using LLMs
 
 An AI-powered career assistant that automates job application workflows by tailoring resumes, identifying skill gaps, retrieving relevant portfolio projects, and generating personalized cover letters.
 
 The system combines **LLMs, semantic search, and vector databases** to align a candidate’s profile with job requirements.
 
-* * *
 
-# Project Overview
+## Project Overview
 
 Job applications often require tailoring a resume and writing a custom cover letter for each role. This process is repetitive and time-consuming.
 
@@ -23,9 +22,7 @@ This project automates and enhances that process by:
 
 All outputs are delivered through an interactive **Streamlit web application**.
 
-* * *
-
-# Technology Stack
+## Technology Stack
 
 | Component | Technology |
 |--------|--------|
@@ -40,17 +37,15 @@ All outputs are delivered through an interactive **Streamlit web application**.
 | UI | Streamlit |
 
 
-* * *
 
-# Key Features
+## Key Features
 
-## Job Description Scraping
+### Job Description Scraping
 
 The system retrieves job postings directly from URLs using **LangChain's WebBaseLoader**, which extracts visible text from the webpage.
 
-* * *
 
-## LLM-Based Job Information Extraction
+### LLM-Based Job Information Extraction
 
 The scraped text often contains navigation menus, advertisements, and formatting noise.
 
@@ -68,9 +63,7 @@ A **Groq LLM (Llama-3.3-70B-Versatile)** processes this raw text and extracts st
 This structured format allows downstream components to use the information more effectively.
 
 
-* * *
-
-## Resume Parsing
+### Resume Parsing
 
 The resume is stored as a **PDF file** inside the project directory.
 
@@ -81,27 +74,23 @@ The extracted text is then passed to the LLM to produce structured resume data i
 - Work Experience
 - Projects
 
-* * *
-
-## Portfolio Semantic Search (ChromaDB and HuggingFace)
+### Portfolio Semantic Search (ChromaDB and HuggingFace)
 
 Portfolio projects are stored in a CSV file, converted into embeddings and indexed in **ChromaDB**
 
 Job description are embedded, compared with stored project embeddings and **most relevant projects** returned.
 
-* * *
-
-## Skill Gap Analysis
+### Skill Gap Analysis
 
  Skills from the resume and portfolio are aggregated to build a unified candidate profile, then compared against the required skills from the job description, using embeddings and semantic similarity to identify related or equivalent skills.
 
-## Resume Tailoring and Cover Letter Generation
+### Resume Tailoring and Cover Letter Generation
 
 Using the extracted job data and structured resume information, the LLM generates a **tailored resume** and **cover letter**
 
 ---
 
-# Running the Application
+## Running the Application
 
 ### Clone the repository
 
@@ -163,7 +152,7 @@ The app will open in your browser.
 
 ---
 
-# Future Improvements
+## Future Improvements
 
 Possible extensions include:
 
