@@ -121,8 +121,8 @@ Computes cosine similarity, ranks and explains relevance, improving transparency
 * * *
 
 ## Skill Gap Analysis
- Combines skills identiied in the resume and portfolio and outputs Matched Skills and Missing Skills
 
+ Skills from the resume and portfolio are aggregated to build a unified candidate profile, then compared against the required skills from the job description, using embeddings and semantic similarity to identify related or equivalent skills.
 
 ## Resume Tailoring
 
