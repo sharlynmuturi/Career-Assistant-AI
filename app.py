@@ -23,6 +23,25 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+# Scrape Job Page
+def scrape_job_page(url):
+    loader = WebBaseLoader(url)
+    docs = loader.load()
+    return docs[0].page_content if docs else ""
+
+def clean_text(text):
+    if not text:
+        return ""
+    
+    # merged words (basic heuristic)
+    text = re.sub(r'([a-z])([A-Z])', r'\1 \2', text)
+    # missing spaces after punctuation
+    text = re.sub(r'(?<=\w)([A-Z])', r' \1', text)
+    # normalize whitespace
+    text = re.sub(r'\s+', ' ', text)
+    
+    return text.strip()
+
 st.set_page_config(page_title="AI Career Assistant", layout="wide")
 st.title("AI Resume & Job Matching Assistant")
 st.caption("This demo app uses my personal resume and portfolio projects.")
@@ -30,7 +49,29 @@ st.caption("This demo app uses my personal resume and portfolio projects.")
 BASE_DIR = Path(__file__).parent
 
 job_link = st.text_input("Paste Job Description URL")
-manual_job_text = st.text_area("Or paste job description manually (use if URL fails)",height=200)
+manual_job_text = st.text_area("Or paste job description manually (use if URL fails)",height=200, disabled=bool(job_link))
+
+#  STATE
+if "page_data" not in st.session_state:
+    st.session_state.page_data = None
+
+if st.button("Analyze Job Description"):
+    
+    if job_link:
+        with st.spinner("Scraping job description from URL..."):
+            raw = scrape_job_page(job_link)
+            page_data = clean_text(raw)
+        st.success("Loaded")
+
+    elif manual_job_text:
+        with st.spinner("Processing pasted job description..."):
+            page_data = clean_text(manual_job_text)
+        st.success("Loaded")
+
+    else:
+        st.warning("Please provide a job URL or paste a job description.")
+
+page_data = st.session_state.page_data
 
 resume_path = BASE_DIR / "resume.pdf"
 
@@ -76,37 +117,6 @@ llm = ChatGroq(
     model_name="llama-3.3-70b-versatile"
 )
 parser = JsonOutputParser()
-
-
-# Scrape Job Page
-def scrape_job_page(url):
-    loader = WebBaseLoader(url)
-    docs = loader.load()
-    return docs[0].page_content if docs else ""
-
-def clean_text(text):
-    if not text:
-        return ""
-    
-    # merged words (basic heuristic)
-    text = re.sub(r'([a-z])([A-Z])', r'\1 \2', text)
-    # missing spaces after punctuation
-    text = re.sub(r'(?<=\w)([A-Z])', r' \1', text)
-    # normalize whitespace
-    text = re.sub(r'\s+', ' ', text)
-    
-    return text.strip()
-
-
-page_data = None
-
-if job_link:
-    page_data = scrape_job_page(job_link)
-
-# manual input if scraping fails or is empty
-if (not page_data or page_data.strip() == "") and manual_job_text:
-    page_data = clean_text(manual_job_text)
-
 
 # Job Extraction Prompt
 prompt_extract = PromptTemplate.from_template("""
