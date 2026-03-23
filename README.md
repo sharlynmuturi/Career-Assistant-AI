@@ -203,26 +203,15 @@ The API key is used to access the **Groq LLM service**.
 
 ### Preparing Portfolio Data
 
-If you have your projects in a portfolio website, you can process them using the provided script.
+If you have your projects in a portfolio website, process them and export the cleaned dataset as portfolio.csv using the provided script.
 
 Run:
 
 ``` bash
 python scrape_portfolio.py
 ```
-This script:
 
-1. Scrapes a portfolio website and extracts project titles and descriptions from the HTML structure.
-2. Detects the technology stack used in each project by matching keywords in the descriptions.
-3. Searches nearby links to identify and capture the associated GitHub repository for each project.
-4. Aggregates the extracted information into a structured dataset using Pandas and creates a combined text field (all_text = project name + description + tech stack).
-5. Exports the cleaned dataset as portfolio.csv.
-
-If you do not have a portfolio website, you can manually create a portfolio.csv with columns like project_name, description, tech_stack and link.
-
-Combine the project name, description, and tech stack into a column called all_text which will be ingested into ChromaDB.
-
-ChromaDB creates and stores embeddings that enable semantic retrieval of relevant portfolio projects for the resume tailoring and cover letter generation workflows.
+If you do not have a portfolio website, you can manually create a portfolio.csv with the columns project_name, description, tech_stack, link and all_text.
 
 ---
 
