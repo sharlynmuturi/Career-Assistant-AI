@@ -1,41 +1,37 @@
 Sharlyn Muturi
 
 PROFESSIONAL SUMMARY
-Results-driven and detail-oriented data science professional with a strong background in machine learning, data analysis, and programming. Proficient in developing predictive models and deploying them using various tools and technologies. Passionate about working in the climate space and creating robust forecasting systems.
+Results-driven Lead Data Scientist with 3+ years of experience in discovering insights from complex data sets and building models to support business objectives and decision-making. Proficient in machine learning, data mining, and data visualization, with a strong background in statistical analysis and programming languages such as Python, R, SQL, and Java.
 
 SKILLS
-- Programming languages: Python, R
-- Machine learning frameworks: TensorFlow, PyTorch, Scikit-learn
-- Data analysis and visualization tools: Tableau, PowerBI
-- Cloud platforms: AWS, Google Cloud, Azure
-- Data storage and processing: Hadoop, Spark, SQL
+- Programming languages: Python, R, SQL, Java, JavaScript
+- Data analysis and visualization: Tableau, PowerBI, Databricks, SQL Server, MySQL, PostgreSQL, Spark
+- Machine learning: Regression and Classification Models, Time Series Analysis, Predictive Modeling, NLP, Neural Networks
+- Data mining and statistical analysis: Data visualization, Statistical analysis, Data mining
 - Operating Systems: Windows, Linux
 
 EXPERIENCE
 UNDERWRITING ASSISTANT
 Incourage Insurance Agency, Nairobi, Kenya
-Dec 2024—June 2025
-- Utilized data analysis and machine learning techniques to identify trends and patterns in insurance data
-- Developed and implemented predictive models to forecast insurance risks
-- Collaborated with cross-functional teams to integrate data into robust systems
+Dec 2024 - June 2025
+- Analyzed risk data, including transactional and premium reconciliation, to inform business decisions
+- Developed and maintained databases to store and manage insurance-related data
+- Utilized data analysis and visualization tools to identify trends and patterns in insurance data
 
 INSURANCE OFFICER ATTACHEE
 Kenya Electricity Generating Company PLC (KenGen), Nairobi, Kenya
-May 2023—Jul 2023
-- Assisted in data collection and analysis for insurance-related projects
-- Developed reports and visualizations to communicate insights to stakeholders
-- Worked closely with teams to identify areas of improvement and implement solutions
+May 2023 - Jul 2023
+- Managed a portfolio of insurance policies, ensuring compliance and liaising with insurers
+- Coordinated premium payments and reported and facilitated settlement of claims
+- Built a motor insurance database for data organization and streamlined retrieval processes
 
 PROJECTS
-- Stock Forecasting & Portfolio Optimization: Developed a predictive model using machine learning and statistical methods to forecast stock prices and optimize portfolios
-- SaaS Customer Churn Prediction and Retention: Built a predictive model using machine learning and survival analysis to predict customer churn and retention
-- Image Classification with CNNs: Utilized PyTorch and TensorFlow to develop a convolutional neural network for image classification
-- Sales Data Warehouse and Analytics: Designed and implemented a data warehouse and analytics pipeline using SQL and Tableau
+- HR Data Analysis & Visualization: Built interactive dashboards to analyze workforce and organizational metrics
+- Product & Customer Sales Performance ETL: Developed an end-to-end customer and product sales analytics pipeline
+- Sales Data Warehouse and Analytics: Created a star-schema data warehouse and analytical reporting using SQL and Tableau
+- SaaS Customer Churn Prediction and Retention: Developed a machine learning model to predict churn probability and estimate time-to-churn
+- Stock Forecasting & Portfolio Optimization: Built an AI-driven system to analyze and forecast stock prices and optimize a portfolio
 
 EDUCATION
-Bachelor of Science in Actuarial Science, GPA: 3.5
-The University of Nairobi
-2020—2024
-Kenya Certificate of Secondary Education (K.C.S.E), Grade: A-
-Chogoria Girls’ High School
-2016—2019
+Bachelor of Science in Actuarial Science, The University of Nairobi, 2020-2024
+Kenya Certificate of Secondary Education (K.C.S.E), Chogoria Girls’ High School, 2016-2019

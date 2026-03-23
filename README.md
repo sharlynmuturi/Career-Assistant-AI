@@ -1,30 +1,29 @@
-# AI Career Assistant  
-### Resume Tailoring & Cover Letter Generation with LLMs
+# AI Career Assistant
 
-An AI-powered career assistant that helps tailor resume and generate personalized cover letters for specific job postings.
+### Resume Tailoring, Skill Gap Analysis & Cover Letter Generation using LLMs
 
-The application scrapes job descriptions from online listings, extracts structured job requirements using a Large Language Model (LLM), retrieves the most relevant portfolio projects using semantic vector search, and generates tailored resumes and cover letters.
+An AI-powered career assistant that automates job application workflows by tailoring resumes, identifying skill gaps, retrieving relevant portfolio projects, and generating personalized cover letters.
 
-The system integrates **LangChain, Groq LLM (Llama-3.3-70B-Versatile), ChromaDB, and Streamlit**.
+The system combines **LLMs, semantic search, and vector databases** to align a candidate’s profile with job requirements.
 
----
+* * *
 
 # Project Overview
 
 Job applications often require tailoring a resume and writing a custom cover letter for each role. This process is repetitive and time-consuming.
 
-This project automates that workflow by:
+This project automates and enhances that process by:
 
-1. Scraping job descriptions from career pages.
-2. Extracting structured job requirements using an LLM.
-3. Processing and parsing a resume.
-4. Retrieving relevant portfolio projects using vector similarity search.
-5. Generating a tailored resume aligned with the job posting.
-6. Writing a personalized cover letter referencing relevant experience and projects.
+1.  Scraping job descriptions from live URLs
+2.  Extracting structured job requirements using an LLM
+3.  Parsing and structuring resume content
+4.  Retrieving relevant portfolio projects using semantic search
+5.  Performing skill gap analysis
+6.  Generating tailored resumes and writing personalized cover letters
 
-The final output is presented through an interactive **Streamlit web interface**.
+All outputs are delivered through an interactive **Streamlit web application**.
 
----
+* * *
 
 # Technology Stack
 
@@ -32,25 +31,50 @@ The final output is presented through an interactive **Streamlit web interface**
 |--------|--------|
 | Programming Language | Python |
 | LLM | Groq API – Llama-3.3-70B-Versatile |
-| LLM Orchestration | LangChain |
+| Orchestration | LangChain |
+| Embeddings | HuggingFace (all-MiniLM-L6-v2) |
 | Vector Database | ChromaDB |
 | Resume Processing | pdfplumber |
 | Web Scraping | LangChain WebBaseLoader |
-| Data Processing | Pandas |
+| Data Processing | Pandas, NumPy |
 | UI | Streamlit |
 
----
+
+* * *
+
+# System Architecture
+
+
+Job URL → Web Scraper → LLM (Job Extraction)  
+                               ↓  
+                        Structured Job Data  
+                               ↓  
+Resume PDF → Text Extraction → LLM (Resume Parsing)  
+                               ↓  
+                      Structured Resume Data  
+                               ↓  
+Portfolio CSV → ChromaDB (Embeddings)  
+                               ↓  
+         Semantic Retrieval of Relevant Projects  
+                               ↓  
+     Skill Gap Analysis (Job vs Resume + Portfolio)  
+                               ↓  
+     LLM → Tailored Resume + Cover Letter
+
+* * *
 
 # Key Features
 
-### Job Description Scraping
+## Job Description Scraping
+
 The system retrieves job postings directly from URLs using **LangChain's WebBaseLoader**, which extracts visible text from the webpage.
 
 This eliminates the need to manually copy and paste job descriptions.
 
----
+* * *
 
-### Job Information Extraction
+## LLM-Based Job Information Extraction
+
 The scraped text often contains navigation menus, advertisements, and formatting noise.
 
 A **Groq LLM (Llama-3.3-70B-Versatile)** processes this raw text and extracts structured job information in JSON format:
@@ -66,13 +90,12 @@ A **Groq LLM (Llama-3.3-70B-Versatile)** processes this raw text and extracts st
 
 This structured format allows downstream components to use the information more effectively.
 
----
 
-### Resume Processing
+* * *
+
+## Resume Parsing
 
 The resume is stored as a **PDF file** inside the project directory.
-
-The application uses **pdfplumber** to extract text from each page of the PDF.
 
 The extracted text is then passed to the LLM to produce structured resume data including:
 
@@ -81,33 +104,27 @@ The extracted text is then passed to the LLM to produce structured resume data i
 - Work Experience
 - Projects
 
-This structured representation helps the AI better understand the candidate profile.
+* * *
 
----
+## Portfolio Semantic Search (ChromaDB)
 
-### Portfolio Semantic Search (ChromaDB)
+Portfolio projects are stored in a CSV file, converted into embeddings and indexed in **ChromaDB**
 
-Portfolio projects are stored in a **CSV file**.
+Job description are embedded, compared with stored project embeddings and **most relevant projects** returned.
 
-Each project contains:
+* * *
 
-- project_name
-- description
-- tech_stack
-- link
+## Semantic Matching using Manual Embedding Similarity (HuggingFace)
+
+Computes cosine similarity, ranks and explains relevance, improving transparency
+
+* * *
+
+## Skill Gap Analysis
+ Combines skills identiied in the resume and portfolio and outputs Matched Skills and Missing Skills
 
 
-These projects are inserted into **ChromaDB**, a vector database.
-
-The database converts project descriptions into vector embeddings and stores them for semantic search.
-
-When a job description is provided, the system retrieves the **most relevant portfolio projects** using similarity search.
-
-This ensures the AI references the **most relevant projects** in the tailored resume and cover letter.
-
----
-
-### Resume Tailoring
+## Resume Tailoring
 
 Using the extracted job data and structured resume information, the LLM generates a **tailored resume**.
 
@@ -130,7 +147,7 @@ The output includes sections such as:
 
 ---
 
-### Cover Letter Generation
+## Cover Letter Generation
 
 The system also generates a **custom cover letter** based on:
 
@@ -224,9 +241,16 @@ The app will open in your browser.
 
 Possible extensions include:
 
+- Improve job scraping robustness (Selenium fallback)
+- Add fuzzy skill matching (semantic similarity)
 - Allowing resume and portfolio csv uploads in the UI
 - Supporting multiple job comparisons
 
 
----
+# Limitations
 
+- Some job pages block scraping → may return empty content
+- LLM extraction depends on page quality
+- Skill matching is rule-based (not fully semantic yet)
+
+* * *

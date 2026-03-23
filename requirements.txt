@@ -1,7 +1,11 @@
 langchain
 langchain-groq
-chromadb
 langchain_community
+langchain_openai
+langchain_huggingface
+langchain_chroma
+sentence-transformers
+chromadb
 pdfplumber
 bs4
 lxml
