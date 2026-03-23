@@ -61,12 +61,10 @@ if st.button("Analyze Job Description"):
         with st.spinner("Scraping job description from URL..."):
             raw = scrape_job_page(job_link)
             st.session_state.page_data = clean_text(raw)
-        st.success("Loaded")
 
     elif manual_job_text:
         with st.spinner("Processing pasted job description..."):
             st.session_state.page_data = clean_text(manual_job_text)
-        st.success("Loaded")
 
     else:
         st.warning("Please provide a job URL or paste a job description.")
