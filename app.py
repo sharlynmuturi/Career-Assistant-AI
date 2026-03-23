@@ -19,6 +19,9 @@ from sentence_transformers import SentenceTransformer
 from langchain_huggingface.embeddings import HuggingFaceEmbeddings
 from langchain_chroma import Chroma
 
+from numpy import dot
+from numpy.linalg import norm
+
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -310,19 +313,56 @@ with st.spinner("Extracting job data and running analysis..."):
 
     top_projects_text = get_top_projects(job_text) if job_data and (job_data.get("description") or job_data.get("skills")) else None
 
-
-    def extract_portfolio_skills(top_projects_text):
-        """
-        Extract a list of skills/technologies from the top portfolio projects.
-        """
+    def extract_portfolio_skills(text):
         skills = set()
-        for line in top_projects_text.split("\n"):
-            if line.startswith("Technologies:"):
-                techs = line.replace("Technologies:", "").strip().split(",")
-                techs = [t.strip() for t in techs if t.strip()]
-                skills.update(techs)
+    
+        for line in text.split("\n"):
+            line = line.lower()
+    
+            if "technologies:" in line:
+                techs = line.replace("technologies:", "").split(",")
+                skills.update([t.strip() for t in techs if t.strip()])
+    
+            # NEW: detect keywords in descriptions
+            keywords = [
+                "machine learning", "deep learning", "nlp", "forecasting",
+                "classification", "regression", "data analysis"
+            ]
+    
+            for kw in keywords:
+                if kw in line:
+                    skills.add(kw)
+    
         return list(skills)
 
+
+    def cosine_sim(a, b):
+        return dot(a, b) / (norm(a) * norm(b))
+
+    def semantic_skill_match(job_skills, candidate_skills, embedding_model, threshold=0.7):
+        matched = []
+        missing = []
+    
+        job_embeddings = embedding_model.embed_documents(job_skills)
+        candidate_embeddings = embedding_model.embed_documents(candidate_skills)
+    
+        for i, job_skill in enumerate(job_skills):
+            job_emb = job_embeddings[i]
+    
+            found_match = False
+    
+            for j, cand_skill in enumerate(candidate_skills):
+                sim = cosine_sim(job_emb, candidate_embeddings[j])
+    
+                if sim >= threshold:
+                    matched.append(job_skill)
+                    found_match = True
+                    break
+    
+            if not found_match:
+                missing.append(job_skill)
+    
+        return matched, missing
 
     matched_skills = []
     missing_skills = []
@@ -339,8 +379,9 @@ with st.spinner("Extracting job data and running analysis..."):
         candidate_skills_normalized = normalize_skills(combined_candidate_skills)
         
         # Compute matched / missing
-        matched_skills_normalized = job_skills_normalized.intersection(candidate_skills_normalized)
-        missing_skills_normalized = job_skills_normalized.difference(candidate_skills_normalized)
+        embedding_model = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+        
+        matched_skills, missing_skills = semantic_skill_match(job_data.get("skills") or [], combined_candidate_skills, embedding_model)
 
         # Display using original capitalization from resume/portfolio if desired
         matched_skills = [skill for skill in combined_candidate_skills if skill.lower() in matched_skills_normalized]
