@@ -230,12 +230,18 @@ with st.spinner("Parsing resume..."):
 
     # resume_data = chain_resume_extract.invoke({"resume_text": resume_text})
 
+@st.cache_resource
+def get_embedding_model():
+    return HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+
+
+
 with st.spinner("Extracting job data and running analysis..."):
     # Semantic Matching
     # HuggingFace embeddings for job description
     if job_data and (job_data.get("description") or job_data.get("skills")):
 
-        embedding_model = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+        embedding_model = get_embedding_model()
         
         # Embed job
         description = job_data.get("description") or ""
@@ -368,22 +374,30 @@ with st.spinner("Extracting job data and running analysis..."):
 
     matched_skills = []
     missing_skills = []
-
+    
     if job_data and (job_data.get("description") or job_data.get("skills")):
+        
         portfolio_skills = extract_portfolio_skills(top_projects_text)
         
-        # Combine resume and portfolio skills
         combined_candidate_skills = resume_data.get("skills", []) + portfolio_skills
         
-        # Normalize all skills
-        job_skills_normalized = normalize_skills(job_data.get("skills" or []))
-        job_skills_normalized = normalize_skills(job_data.get("skills") or [])
-        candidate_skills_normalized = normalize_skills(combined_candidate_skills)
+        job_skills = list(normalize_skills(job_data.get("skills") or []))
+        candidate_skills = list(normalize_skills(combined_candidate_skills))
         
-        # semantic skill matching
-        embedding_model = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+        # Add description 
+        if job_data.get("description"):
+            job_skills.append(job_data["description"])
         
-        matched_skills, missing_skills = semantic_skill_match(job_data.get("skills") + [job_data.get("description")] or [], combined_candidate_skills, embedding_model)
+        # Cached embeddings
+        embedding_model = get_embedding_model()
+        
+        # Semantic match
+        if job_skills and candidate_skills:
+            matched_skills, missing_skills = semantic_skill_match(
+                job_skills,
+                candidate_skills,
+                embedding_model
+            )
  
     # Resume & cover letter prompts
     prompt_resume_tailor = PromptTemplate.from_template("""
