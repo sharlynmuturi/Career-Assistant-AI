@@ -42,13 +42,6 @@ All outputs are delivered through an interactive **Streamlit web application**.
 
 * * *
 
-# System Architecture
-
-
-# Job URL → Web Scraper → LLM (Job Extraction) ↓ Structured Job Data ↓ Resume PDF → Text Extraction → LLM (Resume Parsing) ↓ Structured Resume Data ↓ Portfolio CSV → ChromaDB (Embeddings) ↓ Semantic Retrieval of Relevant Projects ↓ Skill Gap Analysis (Job vs Resume + Portfolio) ↓ LLM → Tailored Resume + Cover Letter
-
-* * *
-
 # Key Features
 
 ## Job Description Scraping
