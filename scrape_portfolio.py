@@ -12,7 +12,7 @@ urls = [
 # Technology keywords used for automatic detection
 tech_keywords = [
 "python", "r", "sql", "javascript", "html", "css", "html/css", "bootstrap", "django", "flask", "streamlit",
-"pytorch", "tensorflow", "prophet", "llms", "rag", "langchain", "hugging face", "openai", "groq", "chromadb", "prompt engineering", "llama",
+"pytorch", "tensorflow", "prophet", "llms", "rag", "langchain", "hugging face", "huggingface", "openai", "groq", "chromadb", "prompt engineering", "llama",
 "spark", "databricks", "mysql database", "sqlite", "mysql", "postgresql", "sql server", "ssms", "access", "mongodb",
 "tableau", "power bi", "excel", "a/b testing", "mlflow", "dvc", "regex", "ai", "tesseract", "ocr", "layoutlm", "nlp", "ai agents", "document ai",
 "machine learning", "statistics", "statistical modelling", "statistical methods", "statistical programming", "analysis", "analytics", "prediction", "forecasting", "fraud detection", "cnns",
