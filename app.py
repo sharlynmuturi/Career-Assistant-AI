@@ -23,7 +23,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 st.set_page_config(page_title="AI Career Assistant", layout="wide")
-st.title("AI Resume & Cover Letter Tailoring")
+st.title("AI Resume & Job Matching Assistant")
 st.caption("This demo app uses my personal resume and portfolio projects.")
 
 BASE_DIR = Path(__file__).parent
