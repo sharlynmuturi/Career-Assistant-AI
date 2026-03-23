@@ -88,8 +88,6 @@ Job description are embedded, compared with stored project embeddings and **most
 
 Using the extracted job data and structured resume information, the LLM generates a **tailored resume** and **cover letter**
 
----
-
 ## Running the Application
 
 ### Clone the repository
@@ -139,8 +137,6 @@ python scrape_portfolio.py
 
 If you do not have a portfolio website, you can manually create a portfolio.csv with the columns project_name, description, tech_stack, link and all_text.
 
----
-
 
 ### Start the Streamlit app:
 
@@ -149,8 +145,6 @@ streamlit run app.py
 ```
 
 The app will open in your browser.
-
----
 
 ## Future Improvements
 
