@@ -106,17 +106,11 @@ The extracted text is then passed to the LLM to produce structured resume data i
 
 * * *
 
-## Portfolio Semantic Search (ChromaDB)
+## Portfolio Semantic Search (ChromaDB and HuggingFace)
 
 Portfolio projects are stored in a CSV file, converted into embeddings and indexed in **ChromaDB**
 
 Job description are embedded, compared with stored project embeddings and **most relevant projects** returned.
-
-* * *
-
-## Semantic Matching using Manual Embedding Similarity (HuggingFace)
-
-Computes cosine similarity, ranks and explains relevance, improving transparency
 
 * * *
 
