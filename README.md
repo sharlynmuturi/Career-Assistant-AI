@@ -48,8 +48,6 @@ All outputs are delivered through an interactive **Streamlit web application**.
 
 The system retrieves job postings directly from URLs using **LangChain's WebBaseLoader**, which extracts visible text from the webpage.
 
-This eliminates the need to manually copy and paste job descriptions.
-
 * * *
 
 ## LLM-Based Job Information Extraction
