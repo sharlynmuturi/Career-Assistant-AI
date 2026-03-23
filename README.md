@@ -97,43 +97,9 @@ Job description are embedded, compared with stored project embeddings and **most
 
  Skills from the resume and portfolio are aggregated to build a unified candidate profile, then compared against the required skills from the job description, using embeddings and semantic similarity to identify related or equivalent skills.
 
-## Resume Tailoring
+## Resume Tailoring and Cover Letter Generation
 
-Using the extracted job data and structured resume information, the LLM generates a **tailored resume**.
-
-The model focuses on:
-
-- Highlighting relevant skills
-- Emphasizing applicable experience
-- Referencing relevant portfolio projects
-- Aligning with job description keywords
-- Maintaining ATS-friendly formatting
-
-The output includes sections such as:
-
-- Professional Summary
-- Skills
-- Experience
-- Projects
-- Education
-
-
----
-
-## Cover Letter Generation
-
-The system also generates a **custom cover letter** based on:
-
-- Job description
-- Candidate resume
-- Relevant portfolio projects
-
-The generated cover letter:
-
-- References the specific role
-- Highlights relevant skills
-- Mentions applicable projects
-- Maintains a professional tone
+Using the extracted job data and structured resume information, the LLM generates a **tailored resume** and **cover letter**
 
 ---
 
@@ -204,15 +170,7 @@ The app will open in your browser.
 Possible extensions include:
 
 - Improve job scraping robustness (Selenium fallback)
-- Add fuzzy skill matching (semantic similarity)
 - Allowing resume and portfolio csv uploads in the UI
 - Supporting multiple job comparisons
-
-
-# Limitations
-
-- Some job pages block scraping → may return empty content
-- LLM extraction depends on page quality
-- Skill matching is rule-based (not fully semantic yet)
 
 * * *
