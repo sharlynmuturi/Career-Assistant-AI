@@ -59,8 +59,7 @@ if st.button("Analyze Job Description"):
     
     if job_link:
         with st.spinner("Scraping job description from URL..."):
-            raw = scrape_job_page(job_link)
-            page_data = clean_text(raw)
+            page_data = scrape_job_page(job_link)
         st.success("Loaded")
 
     elif manual_job_text:
