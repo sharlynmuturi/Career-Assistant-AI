@@ -354,7 +354,11 @@ with st.spinner("Extracting job data and running analysis..."):
     
         for i, job_skill in enumerate(job_skills):
             job_emb = job_embeddings[i]
-    
+            
+            # skip description
+            if len(job_skill.split()) > 5:
+                continue  
+                
             best_match = None
             best_score = 0
     
@@ -366,7 +370,7 @@ with st.spinner("Extracting job data and running analysis..."):
                     best_match = cand_skill
     
             if best_score >= threshold:
-                matches.append(f"{job_skill} → {best_match} ({best_score:.2f})")
+                matches.append(f"{job_skill} - {best_match} ({best_score:.2f})")
             else:
                 missing.append(job_skill)
     
