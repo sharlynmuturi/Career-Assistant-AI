@@ -74,15 +74,16 @@ The extracted text is then passed to the LLM to produce structured resume data i
 - Work Experience
 - Projects
 
-### Portfolio Semantic Search (ChromaDB and HuggingFace)
+### Semantic Search (ChromaDB and HuggingFace)
+#### Portfolio Projects
 
 Portfolio projects are stored in a CSV file, converted into embeddings and indexed in **ChromaDB**
 
-Job description are embedded, compared with stored project embeddings and **most relevant projects** returned.
+Job description are embedded then compared with stored project embeddings using cosine similarity, to identify and rank projects that best align with the role.
 
-### Skill Gap Analysis
+#### Skill Gap Analysis
 
- Skills from the resume and portfolio are aggregated to build a unified candidate profile, then compared against the required skills from the job description, using embeddings and semantic similarity to identify related or equivalent skills.
+ Skills from the resume and portfolio are aggregated to build a unified candidate profile. Semantic matching uses embeddings and cosine similarity to compare job-required skills with candidate skills, to identify related or equivalent skills.
 
 ### Resume Tailoring and Cover Letter Generation
 
@@ -116,14 +117,17 @@ pip install -r requirements.txt
 
 ### Environment Variables
 
-Create a `.env` file in the root directory. Groq Link: [https://console.groq.com]
+Create a `.env` file in the root directory.
+
+[Groq Link](https://console.groq.com)
+
+[Hugging Face Tokens](https://huggingface.co/settings/tokens). Create a token and select read permissions. The token helps avoid slow downloads and get higher rate limits.
 
 ``` bash
-GROQ_API_KEY=your_api_key_here
+GROQ_API_KEY=your_api_key_here # for accessing the Groq LLM.
+HF_TOKEN=your_huggingface_token_here # for downloading sentence-transformers embeddings.
+
 ```
-
-The API key is used to access the **Groq LLM service**.
-
 
 ### Preparing Portfolio Data
 
