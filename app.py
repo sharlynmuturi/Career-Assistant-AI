@@ -336,7 +336,8 @@ with st.spinner("Extracting job data and running analysis..."):
             "spark", "databricks", "mysql database", "sqlite", "mysql", "postgresql", "sql server", "ssms", "access", "mongodb",
             "tableau", "power bi", "excel", "a/b testing", "mlflow", "dvc", "regex", "ai", "tesseract", "ocr", "layoutlm", "nlp", "ai agents", "document ai",
             "machine learning", "deep learning", "statistics", "statistical modelling", "statistical methods", "statistical programming", "analysis", "analytics", "prediction", "forecasting", "fraud detection", "cnns",
-            "shap", "survival analysis", "customer churn", "recommender systems", "nltk", "web scraping", "visualization", "data warehouse", "etl", "data transformation"
+            "shap", "survival analysis", "customer churn", "recommender systems", "nltk", "web scraping", "visualization", "data warehouse", "etl", "data transformation",
+            "lightgbm", "random forest", "isolation forest", "logistic regression"
             ]
     
             for kw in keywords:
