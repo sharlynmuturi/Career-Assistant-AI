@@ -17,7 +17,7 @@ tech_keywords = [
 "tableau", "power bi", "excel", "a/b testing", "mlflow", "dvc", "regex", "ai", "tesseract", "ocr", "layoutlm", "nlp", "ai agents", "document ai",
 "machine learning", "deep learning", "statistics", "statistical modelling", "statistical methods", "statistical programming", "analysis", "analytics", "prediction", "forecasting", "fraud detection", "cnns",
 "shap", "survival analysis", "customer churn", "recommender systems", "nltk", "web scraping", "visualization", "data warehouse", "etl", "data transformation",
-"lightgbm", "random forest", "isolation forest", "logistic regression"
+"lightgbm", "random forest", "isolation forest", "logistic regression", "xgboost", "tweedie", "actuarial pricing", "similarity search", "semantic search", "vector databases", "embeddings"
 ]
 
 # Function to detect technologies in descriptions
